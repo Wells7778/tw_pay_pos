@@ -8,7 +8,7 @@ module TwPayPos
       end
 
       def success?
-        code == '000000'
+        status == '000000'
       end
 
       def error_message

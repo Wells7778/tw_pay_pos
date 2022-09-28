@@ -1,10 +1,9 @@
 require_relative 'base'
-require_relative '../utils/emv_qrcode/decoder.rb'
 
 module TwPayPos
   module Response
     class Register < Base
-      attr_reader :store_key, :key
+      attr_reader :store_key, :key, :key_expiry
 
       def key_expire_at
         /\A(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})(?<hour>\d{2})(?<minute>\d{2})(?<second>\d{2})\Z/ =~ @key_expiry

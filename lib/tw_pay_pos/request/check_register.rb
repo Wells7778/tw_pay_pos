@@ -5,7 +5,7 @@ require_relative '../response/register'
 
 module TwPayPos
   module Request
-    class RenewKey < Base
+    class CheckRegister < Base
 
       private
 
@@ -14,7 +14,7 @@ module TwPayPos
       end
 
       def type
-        'TKEY_REQ'
+        'CONFREG_REQ'
       end
 
       def version
@@ -22,11 +22,13 @@ module TwPayPos
       end
 
       def api_action
-        'key'
+        'reg'
       end
 
-      def sign_secret
-        config.store_key
+      def to_hash
+        data = super
+        data.delete :nonce
+        data
       end
     end
   end

@@ -1,6 +1,11 @@
 module TwPayPos
   class Config
-    attr_accessor :mode, :key, :merchant_id, :terminal_id, :secret
+    attr_accessor :mode,
+                  :key,
+                  :store_key,
+                  :merchant_id,
+                  :terminal_id,
+                  :secret
 
     def initialize
       @mode = :sandbox

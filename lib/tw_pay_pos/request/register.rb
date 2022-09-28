@@ -27,7 +27,8 @@ module TwPayPos
 
       def to_hash
         super.merge(
-          device_type: '11'
+          device_type: '11',
+          registry_key: config.key,
         ).compact
       end
 

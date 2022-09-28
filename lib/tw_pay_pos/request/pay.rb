@@ -7,10 +7,9 @@ module TwPayPos
   module Request
     class Pay < Base
       attr_accessor :order_id,
-                    :amount,
                     :barcode,
                     :products,
-                    :payment_time,
+                    :transaction_id
 
       def amount=(value_amount)
         @amount = value_amount.to_i * 100
@@ -52,6 +51,7 @@ module TwPayPos
           currency: 'TWD',
           amount: @amount,
           auth_code: @barcode,
+          ext_data: @transaction_id.to_s,
         ).compact
       end
     end

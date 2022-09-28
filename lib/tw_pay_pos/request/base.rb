@@ -69,9 +69,13 @@ module TwPayPos
         to_hash.merge(sign: verify_code)
       end
 
+      def sign_secret
+        config.secret
+      end
+
       def verify_code
         string_a = to_hash.sort.map { |k, v| "#{k}=#{v}"}.join('&')
-        string_b = "#{string_a}&key=#{config.secret}"
+        string_b = "#{string_a}&key=#{sign_secret}"
         Base64.strict_encode64 Digest::SHA2.digest(string_b)
       end
 
