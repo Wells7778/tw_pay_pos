@@ -5,7 +5,7 @@ require_relative '../response/query'
 
 module TwPayPos
   module Request
-    class Pay < Base
+    class Query < Base
       attr_accessor :order_id
 
       private
