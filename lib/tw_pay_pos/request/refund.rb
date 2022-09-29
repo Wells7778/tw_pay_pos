@@ -41,12 +41,12 @@ module TwPayPos
       end
 
       def to_hash
-        {
+        super.merge(
           transaction_id: @bank_transaction_id,
           currency: 'TWD',
           amount: @amount,
-          time: @payment_time.to_s,
-        }
+          time: @payment_time.to_s
+        )
       end
     end
   end
