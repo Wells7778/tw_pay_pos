@@ -18,6 +18,14 @@ module TwPayPos
       def status
         @return_code
       end
+
+      def timeout?
+        %w[999990 999996].include? status
+      end
+
+      def secret_expired?
+        status == '100103'
+      end
     end
   end
 end

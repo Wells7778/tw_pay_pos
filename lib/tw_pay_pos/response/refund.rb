@@ -3,7 +3,6 @@ require_relative 'pay'
 
 module TwPayPos
   module Response
-    class Refund < Pay
-    end
+    class Refund < Pay; end
   end
 end

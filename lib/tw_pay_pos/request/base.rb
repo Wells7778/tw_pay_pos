@@ -24,9 +24,14 @@ module TwPayPos
 
         res = send_request
         return res unless response_klass
+
         @response_raw = res.body
         result = JSON.parse res.body rescue {}
-        response_klass.new(result, raw: res.body)
+        resp = response_klass.new(result, raw: res.body)
+        raise TwPayPos::ChannelTimeout, resp.error_message if resp.timeout?
+        raise TwPayPos::SecureKeyExpired, resp.error_message if resp.secret_expired?
+
+        resp
       end
 
       def request_raw
@@ -87,7 +92,7 @@ module TwPayPos
         res = conn.post(api_action) do |req|
           req.body = request_data.to_json
         end
-        return if res.status != 200
+        raise TwPayPos::Error, "response status #{res.status}" if res.status != 200
 
         res
       end

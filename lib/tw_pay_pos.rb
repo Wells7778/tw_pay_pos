@@ -7,6 +7,8 @@ require_relative "tw_pay_pos/request"
 require_relative "tw_pay_pos/response"
 module TwPayPos
   class Error < StandardError; end
+  class ChannelTimeout < Error; end
+  class SecureKeyExpired < Error; end
 
   def self.setup
     yield config
