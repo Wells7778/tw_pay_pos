@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tw_pay_pos (0.1.0)
+    tw_pay_pos (0.2.4)
 
 GEM
   remote: https://rubygems.org/
@@ -29,6 +29,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
+  arm64-darwin-23
 
 DEPENDENCIES
   faraday
